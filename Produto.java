@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class Produto {
     private String nome;
@@ -10,11 +11,13 @@ public class Produto {
     private int quantidade;
     private LocalDate dataValidade;
     private String observacoes;
+    private UUID uuid;
 
     public Produto(String nome, String categoria, int quantidade) {
         this.nome = nome;
         this.categoria = categoria;
         this.quantidade = quantidade;
+        this.uuid = UUID.randomUUID();
     }
 
     public String getNome() {
@@ -88,4 +91,9 @@ public class Produto {
     public void setObservacoes(String observacoes) {
         this.observacoes = observacoes;
     }
+
+    public UUID getUUID() {
+        return uuid;
+    }
+
 }
