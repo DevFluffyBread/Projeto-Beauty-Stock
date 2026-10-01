@@ -15,7 +15,7 @@ public class ProdutoService {
         return produtoRepository.listarProdutos();
     }
 
-    public List<Produto> buscarProduto(UUID uuid) {
+    public Produto buscarProduto(UUID uuid) {
         return produtoRepository.buscarProdutosPorUUID(uuid);
     }
 

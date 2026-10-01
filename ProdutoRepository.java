@@ -32,20 +32,8 @@ public class ProdutoRepository {
         return resultado;
     }
 
-    public List<Produto> buscarProdutosPorUUID(UUID uuid){ // Método para buscar produtos por UUID (01/10/26)
-        List<Produto> resultado = new ArrayList<>();
-
-        if(uuid == null || uuid.toString().trim().isEmpty()){
-            return resultado;
-        }
-
-        for (Produto produto : produtos) {
-            if (produto.getUUID().equals(uuid)) {
-                resultado.add(produto);
-            }
-        }
-
-        return resultado;
+    public Produto buscarProdutosPorUUID(UUID uuid) { // Método para buscar produto por UUID (01/10/26)
+        return encontrarPorUUID(uuid);
     }
 
     public List<Produto> buscarProdutosPorCategoria(String categoria) {
@@ -95,8 +83,12 @@ public class ProdutoRepository {
     }
 
     private Produto encontrarPorUUID(UUID uuid) {
+        if (uuid == null) {
+            throw new IllegalArgumentException("O UUID do produto não pode ser nulo.");
+        }
+
         for (Produto produto : produtos) {
-            if (produto.getUUID().equals(uuid)) {
+            if (uuid.equals(produto.getUUID())) {
                 return produto;
             }
         }
