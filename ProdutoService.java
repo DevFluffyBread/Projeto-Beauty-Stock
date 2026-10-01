@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Gerencia o cadastro e a manutenção dos produtos em estoque.

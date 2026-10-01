@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class ProdutoRepository {
     private final List<Produto> produtos = new ArrayList<>();
