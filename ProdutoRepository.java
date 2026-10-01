@@ -31,6 +31,22 @@ public class ProdutoRepository {
         return resultado;
     }
 
+    public List<Produto> buscarProdutosPorUUID(UUID uuid){ // Método para buscar produtos por UUID (01/10/26)
+        List<Produto> resultado = new ArrayList<>();
+
+        if(uuid == null || uuid.toString().trim().isEmpty()){
+            return resultado;
+        }
+
+        for (Produto produto : produtos) {
+            if (produto.getUUID().equals(uuid)) {
+                resultado.add(produto);
+            }
+        }
+
+        return resultado;
+    }
+
     public List<Produto> buscarProdutosPorCategoria(String categoria) {
         List<Produto> resultado = new ArrayList<>();
 
@@ -47,8 +63,8 @@ public class ProdutoRepository {
         return resultado;
     }
 
-    public boolean editarProduto(String nomeAtual, Produto dadosAtualizados) {
-        Produto produto = encontrarPorNomeExato(nomeAtual);
+    public boolean editarProduto(UUID uuid, Produto dadosAtualizados) { // Método para editar produtos por UUID (01/10/26)
+        Produto produto = encontrarPorUUID(uuid);
 
         if (produto == null || dadosAtualizados == null) {
             return false;
@@ -66,8 +82,8 @@ public class ProdutoRepository {
         return true;
     }
 
-    public boolean excluirProduto(String nome) {
-        Produto produto = encontrarPorNomeExato(nome);
+    public boolean excluirProduto(UUID uuid) {
+        Produto produto = encontrarPorUUID(uuid);
 
         if (produto == null) {
             return false;
@@ -77,12 +93,13 @@ public class ProdutoRepository {
         return true;
     }
 
-    private Produto encontrarPorNomeExato(String nome) {
+    private Produto encontrarPorUUID(UUID uuid) {
         for (Produto produto : produtos) {
-            if (produto.getNome().equalsIgnoreCase(nome)) {
+            if (produto.getUUID().equals(uuid)) {
                 return produto;
             }
         }
         return null;
     }
 }
+

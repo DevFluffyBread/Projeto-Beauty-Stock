@@ -14,19 +14,19 @@ public class ProdutoService {
         return produtoRepository.listarProdutos();
     }
 
-    public List<Produto> buscarProduto(String nome) {
-        return produtoRepository.buscarProdutosPorNome(nome);
+    public List<Produto> buscarProduto(UUID uuid) {
+        return produtoRepository.buscarProdutosPorUUID(uuid);
     }
 
     public List<Produto> filtrarPorCategoria(String categoria) {
         return produtoRepository.buscarProdutosPorCategoria(categoria);
     }
 
-    public boolean editarProduto(String nomeAtual, Produto dadosAtualizados) {
-        return produtoRepository.editarProduto(nomeAtual, dadosAtualizados);
+    public boolean editarProduto(UUID uuid, Produto dadosAtualizados) {
+        return produtoRepository.editarProduto(uuid, dadosAtualizados);
     }
 
-    public boolean excluirProduto(String nome) {
-        return produtoRepository.excluirProduto(nome);
+    public boolean excluirProduto(UUID uuid) {
+        return produtoRepository.excluirProduto(uuid);
     }
 }
